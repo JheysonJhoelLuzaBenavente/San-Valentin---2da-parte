@@ -242,16 +242,16 @@ p.style.top=(pos.top+30)+"px";
 escena.appendChild(p);
 
 setTimeout(()=>{
-p.style.left=`calc(60% + ${puntos[actual].x}px)`;
-p.style.top=`calc(45% + ${puntos[actual].y}px)`;
+p.style.left=`calc(50% + ${puntos[actual].x}px)`;
+p.style.top=`calc(50% + ${puntos[actual].y}px)`;
 },20);
 
 setTimeout(()=>{
 const f=document.createElement("div");
 f.className="fijo";
 f.innerHTML="❤️";
-f.style.left=`calc(60% + ${puntos[actual].x}px)`;
-f.style.top=`calc(45% + ${puntos[actual].y}px)`;
+f.style.left=`calc(50% + ${puntos[actual].x}px)`;
+f.style.top=`calc(50% + ${puntos[actual].y}px)`;
 escena.appendChild(f);
 p.remove();
 actual++;
