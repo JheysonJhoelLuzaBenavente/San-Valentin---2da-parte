@@ -1,169 +1,285 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Mi Amor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root { --rojo: #ff0000; --rosa: #ff4d6d; }
-        body { margin: 0; background-color: #000; overflow: hidden; font-family: 'Quicksand', sans-serif; color: white; }
-        
-        #escena { 
-            position: relative; width: 100vw; height: 100vh; 
-            background: radial-gradient(circle at center, #1a0505 0%, #000 100%); 
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Mi Morenita ❤️</title>
 
-        /* --- OSO CON MOVIMIENTO --- */
-        #oso { 
-            position: absolute; font-size: 70px; left: 10%; top: 50%; 
-            transform: translateY(-50%); z-index: 100;
-            animation: flotar 3s ease-in-out infinite; /* Movimiento constante */
-            transition: transform 0.1s;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
 
-        @keyframes flotar {
-            0%, 100% { transform: translateY(-50%) translateX(0); }
-            50% { transform: translateY(-55%) translateX(5px); }
-        }
+<style>
+:root { --rojo:#ff0033; --rosa:#ff4d6d; }
 
-        /* Efecto de retroceso al disparar */
-        .disparo-recoil { transform: translateY(-50%) translateX(-15px) !important; }
+body{
+margin:0;
+background:#000;
+overflow:hidden;
+font-family:'Quicksand',sans-serif;
+color:white;
+}
 
-        /* --- CORAZONES Y PROYECTILES --- */
-        .proyectil {
-            position: absolute; color: var(--rojo); font-size: 25px; z-index: 50;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            filter: drop-shadow(0 0 8px var(--rojo));
-        }
+#escena{
+position:relative;
+width:100vw;
+height:100vh;
+background:radial-gradient(circle at center,#1a0505 0%,#000 100%);
+overflow:hidden;
+}
 
-        .fijo {
-            position: absolute; color: var(--rojo); font-size: 20px;
-            text-shadow: 0 0 15px var(--rojo); opacity: 0;
-            animation: aparecer 0.3s forwards;
-        }
+/* ===== OSO ===== */
+#oso{
+position:absolute;
+left:5%;
+top:50%;
+transform:translateY(-50%);
+font-size:clamp(45px,10vw,75px);
+z-index:100;
+animation:moverOso 3s ease-in-out infinite;
+transition:transform .15s;
+}
 
-        @keyframes aparecer { to { opacity: 1; transform: scale(1.1); } }
+@keyframes moverOso{
+0%,100%{ transform:translateY(-50%) translateX(0px); }
+50%{ transform:translateY(-55%) translateX(15px); }
+}
 
-        /* --- BOTÓN Y CARTA --- */
-        #interaccion {
-            display: none; position: absolute; top: 75%; left: 50%; 
-            transform: translateX(-50%); text-align: center; z-index: 150;
-        }
+.disparo-recoil{
+transform:translateY(-50%) translateX(-20px) !important;
+}
 
-        #btn-amor {
-            background: linear-gradient(45deg, #ff0000, #ff4d6d);
-            color: white; border: none; border-radius: 50px;
-            padding: 15px 35px; font-weight: bold; cursor: pointer; 
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
-            animation: latido 1.2s infinite;
-        }
+/* ===== CORAZONES ===== */
+.proyectil{
+position:absolute;
+font-size:clamp(18px,5vw,28px);
+color:var(--rojo);
+filter:drop-shadow(0 0 10px var(--rojo));
+transition:all .35s cubic-bezier(.25,.46,.45,.94);
+z-index:50;
+}
 
-        .capa-roja {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, #d00000 0%, #ff0000 100%);
-            display: none; flex-direction: column; align-items: center; 
-            overflow-y: auto; padding: 50px 20px; box-sizing: border-box; z-index: 2000;
-        }
+.fijo{
+position:absolute;
+font-size:clamp(15px,4vw,22px);
+color:var(--rojo);
+text-shadow:0 0 15px var(--rojo);
+opacity:0;
+animation:aparecer .4s forwards;
+}
 
-        .cerrar { position: absolute; right: 25px; top: 15px; font-size: 45px; cursor: pointer; }
-        .titulo { font-family: 'Dancing Script', cursive; font-size: 3.5rem; margin-bottom: 25px; }
-        .marco { width: 100%; max-width: 400px; border-radius: 20px; overflow: hidden; border: 5px solid white; box-shadow: 0 20px 40px rgba(0,0,0,0.4); margin-bottom: 30px; }
-        .marco img { width: 100%; display: block; }
-        .texto { font-size: 1.3rem; line-height: 1.8; font-style: italic; background: rgba(255,255,255,0.15); padding: 25px; border-radius: 20px; backdrop-filter: blur(5px); text-align: center; }
+@keyframes aparecer{
+to{opacity:1; transform:scale(1.15);}
+}
 
-        @keyframes latido { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-    </style>
+/* ===== BOTÓN ===== */
+#interaccion{
+display:none;
+position:absolute;
+bottom:8%;
+left:50%;
+transform:translateX(-50%);
+text-align:center;
+z-index:150;
+}
+
+#btn-amor{
+background:linear-gradient(45deg,#ff0000,#ff4d6d);
+color:white;
+border:none;
+border-radius:50px;
+padding:14px 30px;
+font-weight:bold;
+font-size:clamp(14px,4vw,18px);
+box-shadow:0 0 20px rgba(255,0,0,.6);
+animation:latido 1.2s infinite;
+}
+
+@keyframes latido{
+0%,100%{transform:scale(1)}
+50%{transform:scale(1.1)}
+}
+
+/* ===== CARTA ===== */
+.capa-roja{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:linear-gradient(135deg,#d00000 0%,#ff0000 100%);
+display:none;
+flex-direction:column;
+align-items:center;
+overflow-y:auto;
+padding:50px 20px;
+box-sizing:border-box;
+z-index:2000;
+}
+
+.cerrar{
+position:absolute;
+right:25px;
+top:15px;
+font-size:45px;
+cursor:pointer;
+}
+
+.titulo{
+font-family:'Dancing Script',cursive;
+font-size:clamp(32px,8vw,55px);
+margin-bottom:25px;
+text-align:center;
+}
+
+.marco{
+width:100%;
+max-width:400px;
+border-radius:20px;
+overflow:hidden;
+border:5px solid white;
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
+margin-bottom:30px;
+}
+
+.marco img{
+width:100%;
+display:block;
+}
+
+.texto{
+font-size:clamp(16px,4vw,20px);
+line-height:1.8;
+font-style:italic;
+background:rgba(255,255,255,0.15);
+padding:25px;
+border-radius:20px;
+backdrop-filter:blur(5px);
+text-align:center;
+}
+</style>
 </head>
 <body>
 
-    <div id="escena">
-        <div id="oso">🧸🏹</div>
-        
-        <div id="interaccion">
-            <button id="btn-amor" onclick="abrir()">CLICK AQUÍ ❤️</button>
-            <p style="color: var(--rosa); font-weight: bold; margin-top: 15px;">Te amaré y cuidaré siempre</p>
-        </div>
-    </div>
+<div id="escena">
+<div id="oso">🧸🏹</div>
 
-    <div id="carta" class="capa-roja">
-        <div class="cerrar" onclick="cerrar()">×</div>
-        <div style="max-width: 500px; width: 100%;">
-            <h1 class="titulo" style="text-align: center;">Te amo, cariño</h1>
-            <div class="marco">
-                <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=500" alt="Amor">
-            </div>
-            <div class="texto">
-                <p>Amor mío, desde que llegaste a mi vida todo cambió para mejor. Cada momento a tu lado es un regalo que atesoro profundamente.</p>
-                <p>Eres mi refugio y mi mayor alegría. ❤️</p>
-            </div>
-        </div>
-    </div>
+<div id="interaccion">
+<button id="btn-amor" onclick="abrir()">ABRIR MI CORAZÓN ❤️</button>
+<p style="color:var(--rosa);font-weight:bold;margin-top:15px;">
+Te amaré y cuidaré siempre
+</p>
+</div>
+</div>
 
-    <script>
-        const escena = document.getElementById('escena');
-        const oso = document.getElementById('oso');
+<div id="carta" class="capa-roja">
+<div class="cerrar" onclick="cerrar()">×</div>
 
-        // Generar Estrellas
-        for (let i = 0; i < 40; i++) {
-            let s = document.createElement('div');
-            s.className = 'estrella';
-            s.style.width = s.style.height = Math.random() * 3 + 'px';
-            s.style.top = Math.random() * 100 + '%';
-            s.style.left = Math.random() * 100 + '%';
-            escena.appendChild(s);
-        }
+<div style="max-width:500px;width:100%;">
+<h1 class="titulo">Para mi morenita ❤️</h1>
 
-        // Puntos del Corazón
-        const puntos = [];
-        for (let t = 0; t <= Math.PI * 2; t += 0.2) {
-            let x = 16 * Math.pow(Math.sin(t), 3);
-            let y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
-            puntos.push({x: x * 10, y: y * 10});
-        }
+<div class="marco">
+<img src="img/Foto_Juntos.jpg" alt="Nosotros">
+</div>
+<div class="texto">
+<p>Mi morenita…</p>
 
-        let actual = 0;
-        function disparar() {
-            if (actual < puntos.length) {
-                // Efecto de retroceso en el oso
-                oso.classList.add('disparo-recoil');
-                setTimeout(() => oso.classList.remove('disparo-recoil'), 100);
+<p>Tú sabes que no soy mucho de estas fechas. 
+A mí siempre me han importado más los cumpleaños y los momentos que se viven de verdad. 
+Pero hace rato quería decirte todo esto.</p>
 
-                const p = document.createElement('div');
-                p.className = 'proyectil';
-                p.innerHTML = '❤️';
-                
-                const pos = oso.getBoundingClientRect();
-                p.style.left = (pos.left + 60) + 'px';
-                p.style.top = (pos.top + 30) + 'px';
-                escena.appendChild(p);
+<p>No voy a darle vueltas. 
+La embarré. Te fallé. 
+Tomé decisiones que no debí y sé que eso dañó tu confianza. 
+Y eso pesa.</p>
 
-                setTimeout(() => {
-                    p.style.left = `calc(60% + ${puntos[actual].x}px)`;
-                    p.style.top = `calc(45% + ${puntos[actual].y}px)`;
-                }, 20);
+<p>También sé que no he sido fácil. 
+He sido renegón, orgulloso y muchas veces mi ego ha hablado antes que mi corazón. 
+He reaccionado mal cuando debí pensar mejor las cosas.</p>
 
-                setTimeout(() => {
-                    const f = document.createElement('div');
-                    f.className = 'fijo';
-                    f.innerHTML = '❤️';
-                    f.style.left = `calc(60% + ${puntos[actual].x}px)`;
-                    f.style.top = `calc(45% + ${puntos[actual].y}px)`;
-                    escena.appendChild(f);
-                    p.remove();
-                    actual++;
-                    disparar();
-                }, 200); // Velocidad de ráfaga
-            } else {
-                oso.innerHTML = '🧸🌹';
-                document.getElementById('interaccion').style.display = 'block';
-            }
-        }
+<p>No te escribo para que olvides lo que pasó ni para hacerme la víctima. 
+Te escribo porque me importas y porque no quiero seguir siendo el mismo si eso significa perder algo que vale.</p>
 
-        setTimeout(disparar, 1000);
+<p>Quiero mejorar de verdad. 
+No solo decirlo. 
+Mejorar mi actitud, controlar mi carácter y aprender a cuidar lo que tengo.</p>
 
-        function abrir() { document.getElementById('carta').style.display = 'flex'; }
-        function cerrar() { document.getElementById('carta').style.display = 'none'; }
-    </script>
+<p>No prometo magia ni cambios de un día para otro, 
+pero sí prometo intención real y hechos que lo demuestren.</p>
+
+<p>Lo que siento por ti es sincero. 
+Y por eso quiero hacer las cosas mejor, no perfectas, pero sí mejor.</p>
+
+<p>Te amo. ❤️</p>
+</div>
+
+
+</div>
+</div>
+
+<script>
+const escena=document.getElementById("escena");
+const oso=document.getElementById("oso");
+
+const puntos=[];
+for(let t=0;t<=Math.PI*2;t+=0.2){
+let x=16*Math.pow(Math.sin(t),3);
+let y=-(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t));
+puntos.push({x:x*8,y:y*8});
+}
+
+let actual=0;
+
+function disparar(){
+if(actual<puntos.length){
+
+oso.classList.add("disparo-recoil");
+setTimeout(()=>oso.classList.remove("disparo-recoil"),150);
+
+const p=document.createElement("div");
+p.className="proyectil";
+p.innerHTML="❤️";
+
+const pos=oso.getBoundingClientRect();
+p.style.left=(pos.right-30)+"px";
+p.style.top=(pos.top+30)+"px";
+escena.appendChild(p);
+
+setTimeout(()=>{
+p.style.left=`calc(60% + ${puntos[actual].x}px)`;
+p.style.top=`calc(45% + ${puntos[actual].y}px)`;
+},20);
+
+setTimeout(()=>{
+const f=document.createElement("div");
+f.className="fijo";
+f.innerHTML="❤️";
+f.style.left=`calc(60% + ${puntos[actual].x}px)`;
+f.style.top=`calc(45% + ${puntos[actual].y}px)`;
+escena.appendChild(f);
+p.remove();
+actual++;
+disparar();
+},200);
+
+}else{
+oso.innerHTML="🧸🌹";
+document.getElementById("interaccion").style.display="block";
+}
+}
+
+setTimeout(disparar,1000);
+
+function abrir(){
+document.getElementById("carta").style.display="flex";
+const musica=document.getElementById("musica");
+musica.volume=0.4;
+musica.play();
+}
+
+function cerrar(){
+document.getElementById("carta").style.display="none";
+const musica=document.getElementById("musica");
+musica.pause();
+musica.currentTime=0;
+}
+</script>
+
 </body>
 </html>
